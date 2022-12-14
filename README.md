@@ -1,4 +1,4 @@
-# A compiler for "minimal" C
+#A compiler for "minimal" C
 This compiler implementation was developed for CS 4318 @ TxState Uni
 #Files Required to Build Parser:
 *driver.c
@@ -16,6 +16,10 @@ This compiler implementation was developed for CS 4318 @ TxState Uni
 *Compiled with GCC on Ubuntu
 #Running mcc
 Runs the parser against the input file
-'''./mcc < inputFile.mC'''
+```
+./mcc < inputFile.mC
+```
 Runs the parser against the input file and prints the AST
-'''./mcc --ast < inputFile.mC'''
+```
+./mcc --ast < inputFile.mC
+```
