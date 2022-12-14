@@ -1,5 +1,0 @@
-1. James Helgren, Levi Jacoby, Lucas Thormann - CS4318
-2. We planned to meet everyday once our team was officially formed. We aimed for meeting at 2:00 p.m. everyday & working until we grew tired of working on the assignment for the day.
-3. James implemented the Symbol Table. Levi implemented the AST & glued together anything he saw issues with. Lucas implemented the semantic rules. We worked together on the remaining aspects of the project (i.e. error handling, debugging, etc.)
-4. The two test cases we included are niceneasy.mC & simple.mC. Both of these files can be found in the /assgn2/test/ directory.
-5. All parties contributed equally. 
