@@ -1,0 +1,27 @@
+Levi Jacoby, James Helgren
+CS4318
+James: I plan to spend at least 30 minutes to an hour a day working on the project.
+Levi: I plan to spend at least two hours a day working on the project.
+Both of us used discord and github to communicate and manage source code respectively.
+
+int main() {
+  if ( true ){
+    printf("String Literal");
+  } else {
+    printf(fda");
+  }
+  return 0;
+}
+-----------------------------
+"hello, world!
+me the five
+
+"
+"helo part \2"int main()
+{
+  int num = 3;
+  for(int i =0; i<num; i++)
+    printf("wow\n");
+
+  return 0;
+}

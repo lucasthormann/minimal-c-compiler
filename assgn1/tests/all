@@ -1,0 +1,170 @@
+/* Defs */
+
+%{
+  #include "stdio.h"
+  #include "tokendef.h"
+  #include "string.h"
+  int validStr(const char *text);
+  void updateCol();
+  void checkComment(const char *text);
+  int yycol = 1;
+  int scan_col = 1;
+  int blocklineno = 0;
+  
+%}
+
+digit [0-9]
+number [1-9][0-9]*|0[^0-9]
+negative_number -[1-9][0-9]*
+leading_zero 0[0-9]+
+letter [a-zA-Z]
+identifier [a-zA-Z_][0-9a-zA-Z_]*
+whitespace [ \t]
+newline \n 
+oper_div [/]
+lsq_brkt [\[]
+rsq_brkt [\]]
+rcrly_brkt [\{]
+lcrly_brkt [\}]
+lparen [\(]
+rparen [\)]
+comma [\,]
+semicln [\;]
+not [!]
+inc \+\+
+dec \-\-
+oper_or \|\|
+oper_and \&\&
+oper_asgn \=
+oper_eq ==
+oper_neq "!="
+oper_lte "<="
+oper_gte ">="
+oper_lt "<"
+oper_gt ">"
+oper_add \+
+oper_sub \-
+oper_mul "\*"
+oper_mod "\%"
+oper_at "\@"
+single_comment \/\/.*
+multi_comment \/\*(\n|[^\*])*\*\/
+unterm_comment \/\*|\*\/
+yylineno = 1;
+%%
+  /* rules */
+{oper_add} { updateCol(); return OPER_ADD; }
+{oper_sub} { updateCol(); return OPER_SUB; }
+{oper_mul} { updateCol(); return OPER_MUL; }
+{oper_div} { updateCol(); return OPER_DIV; }
+{oper_lt} { updateCol(); return OPER_LT; }
+{oper_gt} { updateCol(); return OPER_GT; }
+{oper_gte} { updateCol(); return OPER_GTE; }
+{oper_lte} { updateCol(); return OPER_LTE; }
+{oper_eq} { updateCol(); return OPER_EQ; }
+{oper_neq} { updateCol(); return OPER_NEQ; }
+{oper_asgn} { updateCol(); return OPER_ASGN; }
+{oper_and} { updateCol(); return OPER_AND; }
+{oper_or} { updateCol(); return OPER_OR; }
+{oper_mod} { updateCol(); return OPER_MOD; }
+{oper_at} { updateCol(); return OPER_AT; }
+{not} { updateCol(); return OPER_NOT; }
+{inc} { updateCol(); return OPER_INC; }
+{dec} { updateCol(); return OPER_DEC; }
+{lsq_brkt} { updateCol(); return LSQ_BRKT; }
+{rsq_brkt} { updateCol(); return RSQ_BRKT; }
+{lcrly_brkt} { updateCol(); return LCRLY_BRKT; }
+{rcrly_brkt} { updateCol(); return RCRLY_BRKT; }
+{lparen} { updateCol(); return LPAREN; }
+{rparen} { updateCol(); return RPAREN; }
+{comma} { updateCol(); return COMMA; }
+{semicln} { updateCol(); return SEMICLN; } 
+{single_comment} { updateCol(); return COMMENT; }
+{multi_comment} { checkComment(yytext); updateCol(); return MULTI_COMMENT; }
+{unterm_comment} { updateCol(); return UNTERM_COMMENT; }
+int {yycol = yycol + yyleng; updateCol(); return KWD_INT; }
+float { updateCol(); return KWD_FLOAT; }
+if { updateCol(); return KWD_IF; }
+else { updateCol(); return KWD_ELSE; }
+void { updateCol(); return KWD_VOID; }
+char { updateCol(); return KWD_CHAR; }
+string { updateCol(); return KWD_STRING; }
+while { updateCol(); return KWD_WHILE; }
+return { updateCol(); return KWD_RETURN; }
+["].*["] {  updateCol(); return validStr(yytext); }
+["] { updateCol(); return UNTERM_STR; }
+{number} { updateCol(); return INTCONST; }
+{leading_zero} { updateCol(); return LEADING_ZERO; }
+{negative_number} { updateCol(); return NEGATIVE_NUM; }
+{identifier} { updateCol(); return ID; }
+\"(\\.|[^"\\])*\" { updateCol(); return validStr(yytext); }
+\"(\\.|[^\"\\])* { updateCol(); return UNTERM_STR; }
+{whitespace} { updateCol(); }
+{newline} {scan_col=1; yycol=1; ++yylineno;}
+. {return ERROR;}
+%%
+
+// user functions
+int validStr(const char *text) {
+  int i = 0;
+  int j = 0;
+  int sz = strlen(text);
+  int multilineflag = 0;
+  int illstrflag = 0;
+  //make sure the last character is a "
+  //need to transform yytext
+  //copy yytext and place it in temp string
+  for (i = 0; i < sz; i++) {
+    if (text[i] == '\n'){
+      multilineflag = 1;
+      lineblockno++;
+    }
+    if (text[i] == '\\'){
+      j = i + 1;
+      //edge case for unbalanced escape strings i.e "\\\"
+      //if (j == sz-1){
+      //  return UNTERM_STR;
+      //}
+      //check for legal escape characters
+      switch (text[j]){
+        case 'n':
+        break;
+        case 't':
+        break;
+        case '\\':
+        break;
+        case '"':
+        break;
+        default:
+          illstrflag = 1;
+          return ILLEGAL_STR;
+      }
+      i = j;
+    }
+  }
+  if (multilineflag)
+  {
+    return MULTI_LINE_STR;
+  }
+  return STRCONST;
+}
+
+void updateCol()
+{
+  yycol = scan_col;
+  scan_col += yyleng;
+}
+
+void checkComment(const char *text)
+{
+  blocklineno = 0; 
+  int sz = strlen(text);
+  for (int i = 0; i < sz; i++)
+  {
+    if (text[i]=='\n')
+      {
+        blocklineno++; 
+      }
+  }
+ 
+}
