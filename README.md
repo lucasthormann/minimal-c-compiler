@@ -1,10 +1,11 @@
-# ***A Compiler For Monkeys 🐒***
+# ***A Compiler For Monkeys*** 🐒
 This compiler implementation was developed for CS 4318 @ Texas State University in the year 2022. This software takes monkeyC code and compiles it into assembly.
 
 # Dependencies:
 * GCC
 * Ubuntu 22.04 LTS or later
-* lex/yacc
+* Lex
+* Yacc
 
 # Target Info:
 *  MIPS Assembler and Runtime Simulator (https://computerscience.missouristate.edu/mars-mips-simulator.htm)
