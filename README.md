@@ -1,18 +1,26 @@
-# ***A compiler for "minimal" C***
-This compiler implementation was developed for CS 4318 @ TxState Uni
+# ***A Compiler For Monkeys 🐒***
+This compiler implementation was developed for CS 4318 @ Texas State University in the year 2022. This software takes monkeyC code and compiles it into assembly.
 
-# Files Required to Build Parser:
-* driver.c
-* cgen.c - generates MIPS assembly
-* cgen.h
-* parser.y
-* scanner.l
-* symtab.c - generates the symbol tables
-* symtab.h
-* tree.c - generates the AST structure
-* tree.h
-* makefile
+# Dependencies:
+* GCC
+* Ubuntu 22.04 LTS or later
+* lex/yacc
 
-# Target Info
-* MIPSs & the MARs simulator
-* Compiled with GCC on Ubuntu
+# Target Info:
+*  MIPS Assembler and Runtime Simulator (https://computerscience.missouristate.edu/mars-mips-simulator.htm)
+
+# Running The Code:
+```
+make clean && make
+./obj/mcc ./test/*test file*.mC
+```
+
+* If you'd like to analyze the abstract syntax tree or the symbol table of the generated assembly simply add the --ast or --sym flags as seen below.
+
+```
+./obj/mcc --ast ./test/testVals.mC
+```
+or 
+```
+./obj/mcc --sym ./test/testVals.mC
+```
