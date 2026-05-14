@@ -1,12 +1,12 @@
 # ***A Compiler For Minimalists*** 
-This compiler implementation was written in the year 2022 to serve as a capstone project of the computer science focused bachelor's degree program offered by Texas State University. I wrote this digital translator while enrolled in the Compiler Construction (CS 4318) course at the university. This tool takes what is colloquially referred to as a Minimal C source code file as an argument via the command line and produces a MIPS assembly file as output.
+This compiler implementation was written in the year 2022 to serve as a capstone project of the computer science focused bachelor's degree program offered by Texas State University. I wrote this digital translator while enrolled in the university's Compiler Construction (CS 4318) course. This tool takes what is colloquially referred to as a Minimal C source code file as an argument via the command line and produces MIPS assembly code in the terminal as output. 
 
 # Dependencies:
+* Ubuntu 24.04 LTS or later (may include the following tools by default depending on your installation type)
 * GCC 16.1 or newer
-* Ubuntu 22.04 LTS or later
-* GNU Make
+* GNU Make 4.3 or newer
 * flex (The Fast Lexical Analyzer Generator) 2.6 or newer
-* GNU Bison
+* GNU Bison 3.8.2 or newer
 
 # Target Info:
 *  The generated MIPS assembly code is intended to be converted into binary and ran in a simulated hardware environment using the MIPS Assembler and Runtime Simulator (https://computerscience.missouristate.edu/mars-mips-simulator.htm)
@@ -14,7 +14,7 @@ This compiler implementation was written in the year 2022 to serve as a capstone
 # Building & Running The Code:
 ```
 make clean && make
-./obj/mcc ./test/*test file*.mC
+./obj/mcc ./test/*test file*.mC > output.asm
 ```
 
 * If you'd like to analyze the abstract syntax tree or the symbol table used to generate the MIPS assembly code simply add the --ast or --sym flags as seen below.
