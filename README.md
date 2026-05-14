@@ -9,7 +9,7 @@ This compiler implementation was developed for CS 4318 @ Texas State University 
 * GNU Bison
 
 # Target Info:
-*  The generated MIPS assembly code is intended to be assembled into binary and ran in a simulated hardware environment using the MIPS Assembler and Runtime Simulator (https://computerscience.missouristate.edu/mars-mips-simulator.htm)
+*  The generated MIPS assembly code is intended to be converted into binary and ran in a simulated hardware environment using the MIPS Assembler and Runtime Simulator (https://computerscience.missouristate.edu/mars-mips-simulator.htm)
 
 # Running The Code:
 ```
