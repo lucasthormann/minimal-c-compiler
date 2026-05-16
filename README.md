@@ -1,5 +1,5 @@
 # ***A Compiler For Minimalists*** 
-This compiler implementation was written in the year 2022 to serve as a capstone project of the computer science focused bachelor's degree program offered by Texas State University. I wrote this digital translator while enrolled in the university's Compiler Construction (CS 4318) course. This tool takes what is colloquially referred to as a Minimal C source code file as an argument via the command line and produces MIPS assembly code as output. 
+* This compiler implementation was written in the year 2022 to serve as a capstone project of the computer science focused bachelor's degree program offered by Texas State University. I wrote this digital translator while enrolled in the university's Compiler Construction (CS 4318) course. This tool takes what is colloquially referred to as a Minimal C source code file as an argument via the command line and produces MIPS assembly code as output. 
 
 ## Development Environment:
 * Acer Aspire E5-575 (x86_64)
