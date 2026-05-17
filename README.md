@@ -13,7 +13,7 @@
 * flex (The Fast Lexical Analyzer Generator) 2.6 or newer
 * GNU Bison 3.8.2 or newer
 
-## Target Info:
+## Target Environment:
 * The generated MIPS assembly code is intended to be converted into machine code and ran in a simulated hardware environment using the MIPS Assembler and Runtime Simulator (https://computerscience.missouristate.edu/mars-mips-simulator.htm)
 
 # Building (i.e. preprocessing, compiling, assembling, and linking) & Running The Code:
