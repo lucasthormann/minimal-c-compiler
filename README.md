@@ -16,12 +16,12 @@
 ## Target Environment:
 * The generated MIPS assembly code is intended to be converted into machine code and ran in a simulated hardware environment using the MIPS Assembler and Runtime Simulator (https://computerscience.missouristate.edu/mars-mips-simulator.htm)
 
-# Building (i.e. preprocessing, compiling, assembling, and linking) the compiler:
+# Building (i.e. preprocessing, compiling, assembling, and linking)
 ```
 make clean && make
 ```
 
-# Running the compiler:
+# Running
 ```
 ./obj/mcc ./test/*test file*.mC > output.asm
 ```
