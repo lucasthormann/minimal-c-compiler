@@ -18,7 +18,7 @@
 
 # Building (i.e. preprocessing, compiling, assembling, and linking)
 ```
-cd compileMC && make clean && make
+make clean && make
 ```
 
 # Running
