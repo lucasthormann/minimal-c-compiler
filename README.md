@@ -1,4 +1,4 @@
-# ***A Compiler For Minimalists*** 
+# A Compiler for Minimalists
 * This compiler implementation was written during the Fall 2022 semester to serve as a capstone project of the computer science focused bachelor's degree program offered by Texas State University. I wrote this digital translator while enrolled in the university's Compiler Construction (CS 4318) course. This tool takes what is colloquially referred to as a Minimal C source code file as an argument via the command line and produces a file containing MIPS assembly code as output.
 
 ## Development Environment:
@@ -14,8 +14,8 @@
 * GNU Bison (3.8.2 or newer)
 
 ## Target Environment:
-* The generated MIPS assembly file is intended to be converted into machine code and ran in a simulated environment using the MIPS Assembler and Runtime Simulator
-(https://computerscience.missouristate.edu/mars-mips-simulator.htm)
+* The generated MIPS assembly file is intended to be converted into machine code and ran in a simulated environment using the MIPS Assembler and Runtime Simulator that was created by Kenneth Vollmar and Pete Sanderson
+  - https://computerscience.missouristate.edu/mars-mips-simulator.htm
 
 # Building (i.e. preprocessing, compiling, assembling, and linking)
 ```
